@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
@@ -41,7 +39,7 @@ public class Shooter : MonoBehaviour
 
     private void SetLaneSpawner()
     {
-        foreach (var spawnPoint in EnemySpawner.instance.spawnPoints)
+        foreach (var spawnPoint in AttackerSpawner.instance.spawnPoints)
         {
             if (Mathf.Abs(spawnPoint.position.y - transform.position.y) <= Mathf.Epsilon)
             {

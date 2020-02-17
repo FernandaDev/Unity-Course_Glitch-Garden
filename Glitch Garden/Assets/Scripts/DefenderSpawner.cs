@@ -1,23 +1,11 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 
 public class DefenderSpawner : MonoBehaviour
 {
     public static DefenderSpawner instance { get; private set; }
 
-    public UnityEventInt OnStarPointsUpdate = new UnityEventInt();
     Defender currentDefender;
-
-    [SerializeField] int startStarPointsAmount = 300;
-    int currentStarPoints;
-    public int CurrentStarPoints { get => currentStarPoints; 
-        set 
-        { 
-            currentStarPoints = value;
-            OnStarPointsUpdate?.Invoke(currentStarPoints);
-        } 
-    }
-
+    
     private void Awake()
     {
         if (!instance)
@@ -29,10 +17,7 @@ public class DefenderSpawner : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void Start()
-    {
-        CurrentStarPoints = startStarPointsAmount;
-    }
+    
 
     private void OnMouseDown()
     {
@@ -43,11 +28,11 @@ public class DefenderSpawner : MonoBehaviour
     {
         if (!currentDefender) return;
 
-        if (CurrentStarPoints >= currentDefender.GetStarCost())
+        if (GameManager.instance.HasEnoughStars(currentDefender.GetStarCost()))
         { 
             Defender defender = Instantiate(currentDefender, worldPos, Quaternion.identity) as Defender;
             defender.transform.parent = transform;
-            CurrentStarPoints -= currentDefender.GetStarCost();
+            GameManager.instance.RemoveStars(currentDefender.GetStarCost());
         }
     }
 
@@ -68,4 +53,3 @@ public class DefenderSpawner : MonoBehaviour
 }
 
 
-public class UnityEventInt : UnityEvent<int> { }

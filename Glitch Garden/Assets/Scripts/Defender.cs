@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Defender : MonoBehaviour
 {
@@ -13,6 +11,6 @@ public class Defender : MonoBehaviour
 
     public void AddStarPoints(int amount)
     {
-        DefenderSpawner.instance.CurrentStarPoints += amount;
+        GameManager.instance.AddStars(amount);
     }
 }

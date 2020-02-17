@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7087731872305207831}
   - component: {fileID: 3398318294485271822}
   - component: {fileID: 6858613403148910237}
+  - component: {fileID: 3943897687435292424}
   m_Layer: 0
   m_Name: Gnome
   m_TagString: Untagged
@@ -109,6 +110,22 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2050259213530061854, guid: 8c83d7dffdfd5c149a3213c823c9db80,
     type: 3}
   shootTransform: {fileID: 613739418808715061}
+--- !u!114 &3943897687435292424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728713111647717263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c325cc8b345e54cac80281fd8bb58b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformOffset: {fileID: 2440668505018721570}
+  maxHealth: 60
+  DeathVFX: {fileID: 1906222994913036, guid: 740c2b3187d56c341b8cb78e8aa925c5, type: 3}
+  DeathSFX: {fileID: 0}
 --- !u!1 &1194815185091889105
 GameObject:
   m_ObjectHideFlags: 0
