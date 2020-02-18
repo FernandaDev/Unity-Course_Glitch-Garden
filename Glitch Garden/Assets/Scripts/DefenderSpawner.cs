@@ -30,8 +30,7 @@ public class DefenderSpawner : MonoBehaviour
 
         if (GameManager.instance.HasEnoughStars(currentDefender.GetStarCost()))
         { 
-            Defender defender = Instantiate(currentDefender, worldPos, Quaternion.identity) as Defender;
-            defender.transform.parent = transform;
+            Defender defender = Instantiate(currentDefender, worldPos, Quaternion.identity, transform) as Defender;
             GameManager.instance.RemoveStars(currentDefender.GetStarCost());
         }
     }

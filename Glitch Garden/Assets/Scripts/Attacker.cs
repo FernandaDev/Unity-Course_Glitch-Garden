@@ -11,12 +11,13 @@ public class Attacker : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        GameManager.instance.AddAttackerCount();
+        LevelController.instance.AddAttackerCount();
     }
 
     private void OnDestroy()
     {
-        GameManager.instance.RemoveAttackerCount();
+        if(LevelController.instance != null)
+            LevelController.instance.RemoveAttackerCount();
     }
 
     void Update()

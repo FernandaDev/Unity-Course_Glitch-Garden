@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
@@ -27,17 +26,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [Tooltip("Our level timer in SECONDS.")]
-    public int levelTime = 10;
-    bool levelTimerFinished = false;
-    [SerializeField] AudioClip winSFX;
-    int numberOfAttackers = 0;
-
-    public float delayTimeToNextLevel = 2f;
-
     public UnityEventInt OnStarPointsUpdate = new UnityEventInt();
     public UnityEventInt OnLifePointsUpdate = new UnityEventInt();
-    [HideInInspector]public UnityEvent OnLevelComplete = new UnityEvent();
 
     private void Awake()
     {
@@ -49,8 +39,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        CurrentStarPoints = startStarPoints;
-        CurrentLifePoints = startLifePoints;
+        CurrentStarPoints = startStarPoints / PlayerPrefsController.GetDifficulty();
+        CurrentLifePoints = startLifePoints / PlayerPrefsController.GetDifficulty();
     }
 
     public bool HasEnoughStars(int cost)
@@ -70,34 +60,9 @@ public class GameManager : MonoBehaviour
     {
         CurrentLifePoints -= amount;
         if (CurrentLifePoints <= 0)
-            FindObjectOfType<LevelLoader>().LoadMenuScene();
+            LevelController.instance.OnLevelLose();
     }
 
-    public void AddAttackerCount(){numberOfAttackers++;}
-
-    public void RemoveAttackerCount()
-    {
-        numberOfAttackers--;
-
-        if(numberOfAttackers <= 0 && levelTimerFinished)
-        {
-            StartCoroutine(OnLevelCompleted(delayTimeToNextLevel));
-        }
-    }
-
-    public void LevelTimerHasFinished()
-    {
-        levelTimerFinished = true;
-        AttackerSpawner.instance.StopSpawner();
-    }
-
-    IEnumerator OnLevelCompleted(float delayToLoadNextScene)
-    {
-        OnLevelComplete?.Invoke();
-        if(winSFX!=null) AudioSource.PlayClipAtPoint(winSFX, Camera.main.transform.position,0.2f);
-        yield return new WaitForSeconds(delayToLoadNextScene);
-        FindObjectOfType<LevelLoader>().LoadNextScene();
-    }
 }
 
 

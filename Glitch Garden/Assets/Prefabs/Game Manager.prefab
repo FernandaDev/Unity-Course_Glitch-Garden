@@ -43,11 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4bb21971bfe4c64eb04bd26927a450e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startStarPoints: 300
+  startStarPoints: 500
   startLifePoints: 100
-  levelTime: 10
-  winSFX: {fileID: 8300000, guid: 6babb73f2885e104696301be371a7e4f, type: 3}
-  delayTimeToNextLevel: 5
-  OnLevelComplete:
-    m_PersistentCalls:
-      m_Calls: []

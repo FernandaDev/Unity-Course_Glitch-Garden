@@ -26,11 +26,31 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadNextScene()
     {
-        SceneManager.LoadScene(currentSceneIndex +1);
+        if (currentSceneIndex + 1 < SceneManager.sceneCountInBuildSettings -1)
+            SceneManager.LoadScene(currentSceneIndex + 1);
+        else
+            LoadMenuScene();
     }
 
     public void LoadMenuScene()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Start");
+    }
+
+    public void RestartScene()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(currentSceneIndex);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void LoadOptions()
+    {
+        SceneManager.LoadScene("Options Scene");
     }
 }

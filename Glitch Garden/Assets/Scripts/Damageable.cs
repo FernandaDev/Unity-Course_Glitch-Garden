@@ -25,9 +25,9 @@ public class Damageable : MonoBehaviour
     public void Die()
     {
         if(transformOffset!= null)
-            Instantiate(DeathVFX, transformOffset.position, Quaternion.identity);
+            Instantiate(DeathVFX, transformOffset.position, Quaternion.identity, transformOffset);
         else
-            Instantiate(DeathVFX, transform.position, Quaternion.identity);
+            Instantiate(DeathVFX, transform.position, Quaternion.identity, transform);
         
         Destroy(gameObject, 0.1f);
     }

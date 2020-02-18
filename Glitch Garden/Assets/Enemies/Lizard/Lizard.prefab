@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformOffset: {fileID: 4251411757509383868}
-  maxHealth: 50
+  maxHealth: 300
   DeathVFX: {fileID: 1906222994913036, guid: 740c2b3187d56c341b8cb78e8aa925c5, type: 3}
   DeathSFX: {fileID: 0}
 --- !u!114 &2564136471641042538

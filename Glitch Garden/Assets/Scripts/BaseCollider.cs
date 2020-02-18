@@ -8,8 +8,8 @@ public class BaseCollider : MonoBehaviour
     {
         if (otherCollider.GetComponent<Attacker>())
         {
+            Destroy(otherCollider.gameObject);
             GameManager.instance.RemoveLifePoints(damage);
-            Destroy(otherCollider.gameObject, 0.1f);
         }
     }
 }

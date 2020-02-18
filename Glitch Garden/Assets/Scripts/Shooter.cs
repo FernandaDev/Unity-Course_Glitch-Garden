@@ -50,6 +50,6 @@ public class Shooter : MonoBehaviour
 
     public void Shoot()
     {
-        Instantiate(projectilePrefab, shootTransform.position, Quaternion.identity);
+        Instantiate(projectilePrefab, shootTransform.position, Quaternion.identity, shootTransform);
     }
 }
